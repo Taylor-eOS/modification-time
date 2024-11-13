@@ -28,17 +28,15 @@ class FileViewer:
             messagebox.showwarning("No Selection", "Please select files to copy.")
             return
         #dest_folder = filedialog.askdirectory(title="Select Destination Folder")
-        dest_folder = 'Desktop'
+        dest_folder = 'Desktopc'
         if dest_folder:
             for file in selected_files:
                 shutil.copy2(os.path.join(self.folder_path, file), dest_folder)
-            messagebox.showinfo("Success", f"Copied {len(selected_files)} files to {dest_folder}")
+            #messagebox.showinfo("Success", f"Copied {len(selected_files)} files to {dest_folder}")
     
     def run(self):
         self.root.mainloop()
 
-# Usage
 folder_path = "Desktop/backup/"
 app = FileViewer(folder_path)
 app.run()
-
