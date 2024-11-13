@@ -31,7 +31,7 @@ class FileViewer:
         dest_folder = 'Desktop'
         if dest_folder:
             for file in selected_files:
-                shutil.copy2(os.path.join(self.folder_path, file), dest_folder)
+                shutil.copy2(os.path.join(self.folder_path, file), os.path.join(dest_folder, file.split()[0] + os.path.splitext(file)[1]))
             #messagebox.showinfo("Success", f"Copied {len(selected_files)} files to {dest_folder}")
     
     def run(self):
