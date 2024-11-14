@@ -18,7 +18,9 @@ class FileViewer:
         self.copy_button.pack(fill="x")
         
     def populate_list(self):
-        files = sorted(os.listdir(self.folder_path), key=lambda f: os.path.getmtime(os.path.join(self.folder_path, f)), reverse=True)
+        files = sorted(
+            [f for f in os.listdir(self.folder_path) if os.path.isfile(os.path.join(self.folder_path, f))],
+            key=lambda f: os.path.getmtime(os.path.join(self.folder_path, f)), reverse=True)
         for file in files:
             self.listbox.insert("end", file)
     
@@ -40,4 +42,3 @@ class FileViewer:
 folder_path = "Desktop/backup/"
 app = FileViewer(folder_path)
 app.run()
-
